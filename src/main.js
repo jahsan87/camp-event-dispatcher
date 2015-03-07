@@ -13,5 +13,5 @@ changeFontWeight = function(weight){
 }
 
 window.dispatcher = new EventDispatcher();
-window.dispatcher.on('color', changeColor);
+window.dispatcher.on('font', changeColor);
 window.dispatcher.on('background', changeBackgroundColor);
