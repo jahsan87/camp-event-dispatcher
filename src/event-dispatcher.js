@@ -1,7 +1,14 @@
+var eventHandlers = {};
+
+var getHandlers = function(eventType) {
+	var handlers = eventHandlers[eventType];
+	if(!handlers) handlers = eventHandlers[eventType] = []
+	return handlers;
+}
+
 function EventDispatcher() {
 };
 
-var eventHandlers = {};
 
 /* on(eventType, handerFunction)
  * Registers a handerFunction that will be called
@@ -17,8 +24,9 @@ var eventHandlers = {};
  * dispatcher.on('highlight', changeColor)
  */
 EventDispatcher.prototype.on = function(eventType, handler) {
-  /* Implement Me! */
-
+  if (typeof handler != 'function') { throw 'the handler is not a function'; }
+  var handlers = getHandlers(eventType);
+  handlers.push(handler);
 };
 
 /* trigger(eventType, payload)
@@ -32,10 +40,12 @@ EventDispatcher.prototype.on = function(eventType, handler) {
  * dispatcher.trigger('highlight', 'yellow')
  */
 EventDispatcher.prototype.trigger = function(eventType, payload) {
-  /* Implement Me! */
-
-  handler(payload);
-
+  var handlers = getHandlers(eventType);
+  var handler;
+  for (var i=0; i<handlers.length; i++) {
+  	handler = handlers[i]
+  	handler(payload);
+  }
 };
 
 

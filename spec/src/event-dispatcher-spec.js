@@ -20,6 +20,15 @@ describe("EventDispatcher", function() {
     expect(dispatcher).to.be.ok;
   });
 
+
+  describe(".trigger an event with no handlers", function() {
+
+    it("does nothing", function() {
+      dispatcher.trigger(eventType, null);
+      expect(true).to.be.ok
+    });
+  });
+
   describe(".trigger a given event", function() {
     var eventData = 'SomeData';
     var eventPayload = null;
