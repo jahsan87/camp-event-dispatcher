@@ -1,6 +1,8 @@
 function EventDispatcher() {
 };
 
+var eventHandlers = {};
+
 /* on(eventType, handerFunction)
  * Registers a handerFunction that will be called
  * whenever an event of evenType is triggered.
@@ -16,6 +18,7 @@ function EventDispatcher() {
  */
 EventDispatcher.prototype.on = function(eventType, handler) {
   /* Implement Me! */
+
 };
 
 /* trigger(eventType, payload)
@@ -30,6 +33,9 @@ EventDispatcher.prototype.on = function(eventType, handler) {
  */
 EventDispatcher.prototype.trigger = function(eventType, payload) {
   /* Implement Me! */
+
+  handler(payload);
+
 };
 
 
